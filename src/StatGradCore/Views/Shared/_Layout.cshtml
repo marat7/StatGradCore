@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - StatGradCore</title>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <script src="lib/npmlibs/es6-shim/es6-shim.js"></script>
+        <script src="lib/npmlibs/es6-promise/es6-promise.js"></script>
+        <script src="lib/npmlibs/systemjs/system-polyfills.src.js"></script>
+        <script src="lib/npmlibs/angular2/angular2-polyfills.js"></script>
+        <script src="lib/npmlibs/systemjs/system.src.js"></script>
+        <script src="lib/npmlibs/rxjs/Rx.js"></script>
+        <script src="lib/npmlibs/angular2/angular2.js"></script>
+        <script src="lib/npmlibs/angular2/router.js"></script>
+        <script src="lib/npmlibs/angular2/http.js"></script>
+        <script src="lib/jquery/dist/jquery.js"></script>
+        <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    <script>
+    System.config({
+        packages: {
+            'app': { defaultExtension: 'js' },
+            'lib': { defaultExtension: 'js' },
+        }
+    });
+
+    System.import('app/boot')
+        .then(null, console.error.bind(console));
+    </script>
+</head>
+<base href="/" />
+
+<body>
+    <nav class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">StatGrad</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="#">Betfair</a></li>
+                <li><a href="#">Statistics</a></li>
+                <li><a href="#">Purchase</a></li>
+                <li><a href="#">Download</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+            
+        </div>
+        <form class="form-inline" role="form" asp-controller="Betfair" asp-action="Login" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control input-sm" name="username" />
+            </div>
+            <div class="form-group">
+                <input type="password" form-control input-sm" name="password" />
+            </div>
+            <button type="submit" class="btn btn-default input-sm">login</button>
+        </form>
+
+    </nav>
+    
+    <div>
+        @RenderBody()
+        <br />
+        <button type="button" onclick="location.href='@Url.Action("LoadEventTypes", "Betfair")'" class="btn btn-danger">Load</button>
+        <div>
+            @Html.BeginForm() {
+            <label>hello</label>
+            }
+        </div>
+    </div>
+</body>
+</html>

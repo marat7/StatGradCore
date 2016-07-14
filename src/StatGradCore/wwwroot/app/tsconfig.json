@@ -1,0 +1,10 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "experimentalDecorators": true
+    
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -1,0 +1,8 @@
+﻿@model IList<EventTypeResult>
+
+@foreach(var c in Model)
+{
+    <button class="btn btn-danger">@c.EventType.Name</button>
+    <br />
+
+}
